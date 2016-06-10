@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610A9BC61D0B025D00607593 /* tomatoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A9BC51D0B025D00607593 /* tomatoTableViewCell.swift */; };
 		61CA626C1D09A4DD00338C0B /* photoOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CA626B1D09A4DD00338C0B /* photoOperations.swift */; };
 		61DB80721D08B56C0027D2B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DB80711D08B56C0027D2B3 /* AppDelegate.swift */; };
 		61DB80741D08B56C0027D2B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DB80731D08B56C0027D2B3 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610A9BC51D0B025D00607593 /* tomatoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tomatoTableViewCell.swift; sourceTree = "<group>"; };
 		61CA626B1D09A4DD00338C0B /* photoOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoOperations.swift; sourceTree = "<group>"; };
 		61DB806E1D08B56C0027D2B3 /* rotten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rotten.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DB80711D08B56C0027D2B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		610A9BC41D0B022900607593 /* PictureFeed */ = {
+			isa = PBXGroup;
+			children = (
+				61DB80731D08B56C0027D2B3 /* ViewController.swift */,
+				610A9BC51D0B025D00607593 /* tomatoTableViewCell.swift */,
+			);
+			name = PictureFeed;
+			sourceTree = "<group>";
+		};
+		610A9BC71D0B057100607593 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				61CA626B1D09A4DD00338C0B /* photoOperations.swift */,
+				61DB80711D08B56C0027D2B3 /* AppDelegate.swift */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
 		61DB80651D08B56C0027D2B3 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +78,12 @@
 		61DB80701D08B56C0027D2B3 /* rotten */ = {
 			isa = PBXGroup;
 			children = (
-				61DB80711D08B56C0027D2B3 /* AppDelegate.swift */,
-				61DB80731D08B56C0027D2B3 /* ViewController.swift */,
+				610A9BC71D0B057100607593 /* Setup */,
+				610A9BC41D0B022900607593 /* PictureFeed */,
 				61DB80751D08B56C0027D2B3 /* Main.storyboard */,
 				61DB807B1D08B56C0027D2B3 /* Assets.xcassets */,
 				61DB807D1D08B56C0027D2B3 /* LaunchScreen.storyboard */,
 				61DB80801D08B56C0027D2B3 /* Info.plist */,
-				61CA626B1D09A4DD00338C0B /* photoOperations.swift */,
 				61DB80781D08B56C0027D2B3 /* rotten.xcdatamodeld */,
 			);
 			path = rotten;
@@ -144,6 +163,7 @@
 				61DB80741D08B56C0027D2B3 /* ViewController.swift in Sources */,
 				61DB80721D08B56C0027D2B3 /* AppDelegate.swift in Sources */,
 				61CA626C1D09A4DD00338C0B /* photoOperations.swift in Sources */,
+				610A9BC61D0B025D00607593 /* tomatoTableViewCell.swift in Sources */,
 				61DB807A1D08B56C0027D2B3 /* rotten.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

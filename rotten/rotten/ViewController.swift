@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController{
     
     var names = [String]()
     var images = [UIImage]()
@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let pendingOperations = PendingOperations()
     @IBOutlet var scroller: UITableView!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print("hey")
         let url:NSURL = NSURL(string: "https://api.github.com/users")!
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let statusCode = httpResponse.statusCode
             
             if (statusCode == 200) {
+                
                 print("Everyone is fine, file downloaded successfully.")
                 do{
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
@@ -62,48 +64,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photos.count
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:tomatoCell  = scroller.dequeueReusableCellWithIdentifier("cell") as!tomatoCell
-        let photoDetails = photos[indexPath.row]
-        cell.preview.image = photoDetails.image
-        cell.texter.text = photoDetails.name
-        switch (photoDetails.state){
-      
-            
-        case .Failed:
-            cell.texter.text = "Failed to load"
-        case .New, .Downloaded:
-            self.startOperationsForPhotoRecord(photoDetails,indexPath:indexPath)
-        default:
-            print("ge")
-        }
-        if (!scroller.dragging && !scroller.decelerating) {
-            self.startOperationsForPhotoRecord(photoDetails, indexPath: indexPath)
-        }
-        
-        return cell
-    }
-
+    
   
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        //1
-        suspendAllOperations()
-    }
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        // 2
-        if !decelerate {
-            loadImagesForOnscreenCells()
-            resumeAllOperations()
-        }
-    }
-    
+ 
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         // 3
@@ -158,6 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func startOperationsForPhotoRecord(photoDetails: PhotoRecord, indexPath: NSIndexPath){
+        
         switch (photoDetails.state) {
         case .New:
             startDownloadForRecord(photoDetails, indexPath: indexPath)
@@ -168,6 +132,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     func startDownloadForRecord(photoDetails: PhotoRecord, indexPath: NSIndexPath){
+        
         //1
         if let downloadOperation = pendingOperations.downloadsInProgress[indexPath] {
             return
@@ -210,13 +175,55 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         pendingOperations.filtrationsInProgress[indexPath] = filterer
         pendingOperations.filtrationQue.addOperation(filterer)
     }
+    
+
+
 
 }
 
-class tomatoCell: UITableViewCell {
-    @IBOutlet var preview: UIImageView!
+extension ViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return photos.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell:tomatoTableViewCell  = scroller.dequeueReusableCellWithIdentifier("cell") as! tomatoTableViewCell
+        let photoDetails = photos[indexPath.row]
+        cell.preview.image = photoDetails.image
+        cell.texter.text = photoDetails.name
+        switch (photoDetails.state){
+            
+            
+        case .Failed:
+            cell.texter.text = "Failed to load"
+        case .New, .Downloaded:
+            self.startOperationsForPhotoRecord(photoDetails,indexPath:indexPath)
+        default:
+            print("ge")
+        }
+        if (!scroller.dragging && !scroller.decelerating) {
+            self.startOperationsForPhotoRecord(photoDetails, indexPath: indexPath)
+        }
+        
+        return cell
+    }
+
+}
+extension ViewController:UITableViewDelegate {
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        //1
+        suspendAllOperations()
+    }
     
-    @IBOutlet var texter: UILabel!
-    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // 2
+        if !decelerate {
+            loadImagesForOnscreenCells()
+            resumeAllOperations()
+        }
+    }
     
 }
+

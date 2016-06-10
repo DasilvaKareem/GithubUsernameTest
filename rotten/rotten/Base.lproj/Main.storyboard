@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,27 +22,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="122" id="xGk-PZ-BoK" customClass="tomatoCell" customModule="rotten" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="122" id="xGk-PZ-BoK" customClass="tomatoTableViewCell" customModule="rotten" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGk-PZ-BoK" id="feB-Ep-YKN">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="121.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-fc-vBJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-fc-vBJ">
                                                     <rect key="frame" x="8" y="16" width="104" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="104" id="8oP-sk-Ecx"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amm-Tq-bBT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amm-Tq-bBT">
                                                     <rect key="frame" x="144" y="16" width="422" height="75"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Amm-Tq-bBT" secondAttribute="trailing" constant="26" id="2Be-aF-H1B"/>
+                                                <constraint firstItem="Kaw-fc-vBJ" firstAttribute="top" secondItem="Amm-Tq-bBT" secondAttribute="top" id="CtP-yb-E5n"/>
+                                                <constraint firstItem="Kaw-fc-vBJ" firstAttribute="top" secondItem="feB-Ep-YKN" secondAttribute="topMargin" constant="8" id="GU7-Tc-Oiy"/>
+                                                <constraint firstItem="Kaw-fc-vBJ" firstAttribute="leading" secondItem="feB-Ep-YKN" secondAttribute="leadingMargin" id="IIG-nU-QyU"/>
+                                                <constraint firstItem="Kaw-fc-vBJ" firstAttribute="centerY" secondItem="feB-Ep-YKN" secondAttribute="centerY" id="NvU-cH-HcQ"/>
+                                                <constraint firstItem="Amm-Tq-bBT" firstAttribute="leading" secondItem="Kaw-fc-vBJ" secondAttribute="trailing" constant="32" id="gc7-FW-SBs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Amm-Tq-bBT" secondAttribute="bottom" constant="22.5" id="zQj-Zg-B09"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="preview" destination="Kaw-fc-vBJ" id="WN7-fz-FTZ"/>
-                                            <outlet property="texter" destination="Amm-Tq-bBT" id="bG2-VW-j2l"/>
+                                            <outlet property="preview" destination="Kaw-fc-vBJ" id="JS7-Aw-JZw"/>
+                                            <outlet property="texter" destination="Amm-Tq-bBT" id="lbt-j9-QDE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
