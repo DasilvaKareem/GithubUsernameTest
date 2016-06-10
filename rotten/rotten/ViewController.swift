@@ -175,27 +175,25 @@ class ViewController: UIViewController{
         pendingOperations.filtrationsInProgress[indexPath] = filterer
         pendingOperations.filtrationQue.addOperation(filterer)
     }
-    
-
-
-
 }
-
+// MARK: tableview data source
 extension ViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return photos.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell  = scroller.dequeueReusableCellWithIdentifier("cell") as! tomatoTableViewCell
         let photoDetails = photos[indexPath.row]
         cell.preview.image = photoDetails.image
         cell.texter.text = photoDetails.name
         switch (photoDetails.state){
-            
-            
+
         case .Failed:
             cell.texter.text = "Failed to load"
         case .New, .Downloaded:
@@ -204,6 +202,7 @@ extension ViewController: UITableViewDataSource {
             print("ge")
         }
         if (!scroller.dragging && !scroller.decelerating) {
+            
             self.startOperationsForPhotoRecord(photoDetails, indexPath: indexPath)
         }
         
@@ -211,6 +210,7 @@ extension ViewController: UITableViewDataSource {
     }
 
 }
+// MARK: tableview Delagate
 extension ViewController:UITableViewDelegate {
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         //1
