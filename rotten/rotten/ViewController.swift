@@ -19,7 +19,7 @@ class ViewController: UIViewController{
         
         super.viewDidLoad()
         print("hey")
-        let url:NSURL = NSURL(string: "https://api.github.com/users")!
+        let url = NSURL(string: "https://api.github.com/users")!
         let urlRequest = NSMutableURLRequest(URL: url)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(urlRequest, completionHandler: {
@@ -38,7 +38,7 @@ class ViewController: UIViewController{
                         for info in gitInfo {
                             print(info["login"])
                             let name = info["login"] as! String
-                            let profileUrl:NSURL = NSURL(string: info["avatar_url"] as! String)!
+                            let profileUrl = NSURL(string: info["avatar_url"] as! String)!
                             let photoRecord = PhotoRecord(name: name, url: profileUrl)
                             self.photos.append(photoRecord)
                             
@@ -189,7 +189,7 @@ extension ViewController: UITableViewDataSource {
         return photos.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:tomatoTableViewCell  = scroller.dequeueReusableCellWithIdentifier("cell") as! tomatoTableViewCell
+        let cell  = scroller.dequeueReusableCellWithIdentifier("cell") as! tomatoTableViewCell
         let photoDetails = photos[indexPath.row]
         cell.preview.image = photoDetails.image
         cell.texter.text = photoDetails.name
